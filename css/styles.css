@@ -1,0 +1,446 @@
+:root {
+    --font-main: Georgia, Times, 'Times New Roman', serif;
+    --font-title: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    --nav-color: black;
+    --text-color: white;
+    --primary-color: purple;
+    --primary-color-bright: magenta;
+    --primary-color-dark: rgb(20, 3, 30);
+    --secondary-color: cyan;
+
+    --box-color-subtle: rgb(30, 0, 35);
+    --box-hover-color: rgb(40, 0, 40);
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 2rem;
+    color: var(--text-color);
+    background-image: linear-gradient(black, purple);
+    margin: 0px;
+}
+
+/*  =========================================================================
+                    Main Styles - Easiest to override; put high up 
+    ========================================================================= */
+
+h1 {
+    font-family: var(--font-title);
+    font-weight: bolder;
+    font-size: 2.5rem;
+    text-align: center;
+    border: 5px solid;
+    border-color: var(--primary-color) transparent;
+    padding: 20px 5px;
+    /* As h1 is at the top it doesn't need margin */
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    border-left: 4px solid magenta;
+    font-size: 1.8rem;
+    padding: 0.1em 1em;
+    overflow: hidden; /* Make it so it does not crash into infobox */
+}
+
+h3 {
+    border-left: 4px solid darkcyan;
+    font-size: 1.5rem;
+    padding: 0.1em 0.8em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1rem;
+}
+
+li {
+    line-height: 150%;
+}
+
+/*  =========================================================================
+                        Links
+    ========================================================================= */
+a {
+    color: cyan;
+    text-decoration: none;
+}
+
+a:visited {
+    color: blueviolet;
+}
+
+a:hover {
+    color: lightyellow;
+    text-decoration: underline;
+}
+
+/*  =========================================================================
+                        Generic sections
+    ========================================================================= */
+
+section, footer {
+    border-bottom: solid thin var(--primary-color);
+    margin: 10px 0px;
+}
+
+footer {
+    padding-bottom: 1em;
+}
+
+header {
+    margin: 0 0 0 0;
+}
+
+.sep-line {
+    border-bottom: solid 2px var(--primary-color);
+    overflow: hidden;
+}
+
+/*  =========================================================================
+                    BIG sections
+    ========================================================================= */
+
+#main-container {
+    background-color: var(--primary-color-dark);
+    padding: 0px;
+    max-width: 1500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 12em auto 12em;
+    grid-template-rows: 3em auto 2em;
+    grid-template-areas: 
+        ". . ."
+        "side main .";
+}
+
+/* ================= Navigation Top ================= */
+#main-top-nav {
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    background-color: var(--nav-color);
+    border-bottom: solid 2px var(--primary-color);
+    box-shadow: 0px 3px 5px black;
+
+    display: flex;
+    z-index: 10;
+}
+
+#main-top-nav > * {
+    margin: 0.5em 1em
+}
+
+.top-nav-title {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+#main-top-nav a {
+    color: var(--text-color);
+}
+
+#main-top-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.top-nav-options {
+    width: 5em;
+    max-width: 5em;
+    text-align: center;
+}
+
+.top-nav-options:hover {
+    font-weight: bold;
+    background-color: var(--box-hover-color);
+    border-bottom: solid 3px var(--primary-color-bright);
+}
+
+/* ================= Navigation Side ================= */
+#main-side-nav {
+    position: fixed;
+    top: 45px;
+    grid-area: side;
+    padding: 20px;
+    background-color: var(--primary-color-dark);
+    border-right: solid 2px var(--primary-color);
+    box-shadow: 3px 0px 5px black;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+#main-side-nav > * {
+    place-self: center stretch;
+}
+
+#main-side-nav > div {
+    font-weight: bold;
+    text-align: center;
+    border: solid var(--primary-color);
+    border-width: 2px 0px;
+    font-size: 1.3em;
+    padding: 0px 30px
+}
+
+#main-side-nav > ul {
+    margin: 20px 0px;
+    padding-left: 2em;
+    border-left: solid 2px teal;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= Main Content ================= */
+#main-content {
+    grid-area: main;
+    margin: 40px;
+    /* display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 100px 150px auto;
+    grid-template-areas: 
+        "title title"
+        "summary infobox"
+        "intro infobox"
+        "body body"; */
+}
+
+/*  =========================================================================
+                        Specific Header
+    ========================================================================= */
+
+#subtitle {
+    color: cyan;
+    font-size: 1rem;
+    font-style: italic;
+    margin: 0.3em 0;
+}
+
+#title-content {
+    grid-area: title;
+}
+
+#intro-bullet {
+    font-size: 1rem;
+    margin: 1.5em 0;
+    border: solid, var(--primary-color);
+    box-shadow: 0px 3px 5px black;
+    padding: 10px 40px;
+    border-radius: 10px;
+    grid-area: summary;
+}
+
+#intro-text {
+    grid-area: intro;
+}
+
+#intro-bullet li {
+    padding-left: 15px;
+}
+
+.body-content {
+    grid-area: body;
+}
+
+/*  =========================================================================
+                        TABLE and INFOBOX
+    ========================================================================= */
+table {
+    border-collapse: collapse;
+}
+
+tbody, th, tr, td {
+    border: solid thin var(--primary-color);
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: left;
+    line-height: 150%;
+}
+
+tr, td {
+    width: 100%;
+}
+
+tbody {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    background-color: var(--primary-color-dark);
+}
+
+tr:nth-child(even) { /* This MUST go above pseudo class like hover, so hover can override*/
+    background-color: var(--box-color-subtle);
+}
+
+tr:hover {
+    background-color: var(--box-hover-color);
+}
+
+.info-row-header {
+    max-width: 30%;
+}
+
+#infobox {
+    margin: 0.5em 0 0.5em 1em;
+    float: right;
+    max-width: 22em;
+}
+
+#info-title {
+    font-size: 130%;
+    margin: 0px;
+    text-align: center;
+}
+
+#info-image {
+    display: block;
+    margin: 10px auto;
+    width: 300px;
+}
+
+#info-desc {
+    font-size: 100%;
+    margin: 0px;
+    text-align: center;
+    font-weight: normal;
+}
+
+/*  =========================================================================
+                        Figure Images
+    ========================================================================= */
+figure {
+    float: right;
+    max-width: 220px;
+    border: solid thin var(--primary-color);
+    background-color: var(--primary-color-dark);
+    padding: 10px;
+    margin: 0px 0px 15px 15px; /* Make image hug top-right corner*/
+}
+
+figcaption {
+    font-size: 80%;
+    text-align: center;
+}
+
+figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+    padding: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*  =========================================================================
+                        Special Words
+    ========================================================================= */
+.trait {
+    color: magenta;
+    font-weight: bold;
+}
+
+.ailment {
+    color: red;
+    font-weight: bold;
+}
+
+.ailment::before {
+    content: url("../icons/warning.svg");
+    display: inline-block;
+    padding-right: 3px;
+    vertical-align: middle;
+    color: red;
+}
+
+/*  =========================================================================
+                        MEDIA / Responsive
+    ========================================================================= */
+
+/* Remove right side margin */
+@media (max-width: 1200px) {
+    #main-container {
+        grid-template-columns: 12em auto;
+        grid-template-rows: 3em auto;
+        grid-template-areas: 
+            ". ."
+            "side main"
+    }
+}
+
+/* Turn Infobox into full block so text isn't super thin to the side */
+@media (max-width: 850px) {
+    #infobox {
+        margin: 0.5em auto;
+        float: none;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Side nav moved to top */
+@media (max-width: 600px) {
+    #main-container {
+        grid-template-columns: auto;
+        grid-template-rows: 3em 3em auto;
+        grid-template-areas: 
+            "."
+            "side"
+            "main";
+    }
+
+    #main-side-nav {
+        padding: 10px;
+        border: 0;
+        border-bottom: solid 2px var(--primary-color);
+        box-shadow: 0px 3px 5px black;
+        height: auto;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px 20px;
+        line-height: 1.2rem;
+    }
+
+    #main-side-nav > div {
+        font-size: 0.7em;
+        padding: 0px 5px
+    }
+
+    #main-side-nav > ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 0.7em;
+        gap: 5px 25px;
+        flex-grow: 1;
+        margin: 5px 0px;
+        max-width: 80%;
+    }
+}
+
+/* Hide Option entirely */
+@media (max-width: 550px) {
+    .top-nav-options {
+        display: none;
+    }
+}
+
+/* Turn all figure to block so text to squeeze at side */
+@media (max-width: 420px) {
+    figure {
+        margin: 0.5em auto;
+        float: none;
+        display: block;
+    }
+}
